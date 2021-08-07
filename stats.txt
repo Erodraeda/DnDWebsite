@@ -1,0 +1,24 @@
+0 str st
+1 dex st
+2 con st
+3 wis st
+4 int st
+5 cha st
+6 acrobatics
+7 animal hand
+8 arcana
+9 athletics
+10 deception
+11 history
+12 insight
+13 intimidation
+14 investigation
+15 medicine
+16 nature
+17 perception
+18 performance
+19 persuasion
+20 religion
+21 sleight of hand
+22 stealth
+23 survival

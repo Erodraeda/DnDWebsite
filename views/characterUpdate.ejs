@@ -1,0 +1,374 @@
+<%- include('partials/header') %>
+
+<link rel="stylesheet" href="css/character.css">
+
+    <form action="/character/<%= character._id %>/update" method="POST">
+    <div id="main-body-character">
+
+        <div id="main-info-character">
+            <img src="images/placeholder-image-male.jpg" alt="" id="main-char-image">
+            <div id="name-class-race">
+                <div id="main-char-name">
+                    <%= character.charName %>
+                </div>
+                <div id="main-char-class" >
+                    <%= character.class %>
+                        <input type="number" id="inputs-names" name="level" value="<%= character.level %>">
+                </div>
+                <div id="main-char-race">
+                    <%= character.race %>
+                </div>
+            </div>
+        </div>
+
+        <div id="main-stats-character">
+            <div id="main-stat-li">
+                <label for="str">Strength</label>
+                <input id="main-stat-mod" type="input" name="str-mod" readonly value=<%=Math.floor((character.str - 10)/2) %> >
+                <input id="main-stat" type="input" name="str" value=<%=character.str %> >
+            </div>
+            <div id="main-stat-li">
+                <label for="dex">Dexterity</label>
+                <input id="main-stat-mod" type="input" name="dex-mod" readonly value=<%=Math.floor((character.dex - 10)/2) %> >
+                <input id="main-stat" type="input" name="dex" value=<%=character.dex %> >
+            </div>
+            <div id="main-stat-li">
+                <label for="con">Constitution</label>
+                <input id="main-stat-mod" type="input" name="con-mod" readonly value=<%=Math.floor((character.con - 10)/2) %> >
+                <input id="main-stat" type="input" name="con" value=<%=character.con %> >
+            </div>
+            <div id="main-stat-li">
+                <label for="wis">Wisdom</label>
+                <input id="main-stat-mod" type="input" name="wis-mod" readonly value=<%=Math.floor((character.wis - 10)/2) %> >
+                <input id="main-stat" type="input" name="wis" value=<%=character.wis %> >
+            </div>
+            <div id="main-stat-li">
+                <label for="int">Intellect</label>
+                <input id="main-stat-mod" type="input" name="int-mod" readonly value=<%=Math.floor((character.int - 10)/2) %> >
+                <input id="main-stat" type="input" name="int" value=<%=character.int %> >
+            </div>
+            <div id="main-stat-li">
+                <label for="cha">Charisma</label>
+                <input id="main-stat-mod" type="input" name="cha-mod" readonly value=<%=Math.floor((character.cha - 10)/2) %> >
+                <input id="main-stat" type="input" name="cha" value=<%=character.cha %> >
+            </div>
+        </div>
+
+        <div id="main-dmg-ul">
+            <div class="main-stat-input">
+                <div>
+                    <% function apply(damage) { %>
+                    <%    return character.curHP + damage; %>
+                    <% } %>
+                    <button onclick="apply(document.getElementById(damageTaken))">Apply damage/heal</button>
+                </div>
+                <div>
+                    <input type="number" placeholder="+3, -8" name="damage-taken" id="damageTaken">
+                </div>
+            </div>
+        </div>
+
+        <div id="main-hp-ul">
+            <label for="hp" class="hp-top">Hit Points</label>
+            <div id="main-hp-li" class="main-stat-input">
+                <div class="hp-labels"><label for="curHP">Current</label></div>
+                <div class="hp-inputs">
+                    <input type="input" readonly name="curHP" value=<%= character.curHP %>>
+                </div>
+                <div class="hp-labels"><label for="maxHP">Maximum</label></div>
+                <div class="hp-inputs">
+                    <input type="input" readonly name="maxHP" value=<%= character.maxHP %>>
+                </div>
+                <div class="hp-inputs">
+                    <input type="number" name="tempHP" placeholder="Temp HP">
+                </div>
+            </div>
+        </div>
+        <div id="main-die-ul">
+            <div class="main-stat-input">
+                <div><label for="hitDie">Hit Die</label></div>
+                <div>
+                    <input type="input" name="hitDie" value=<%= character.hitDie %>>
+                    <input type="input" name="hitDie" placeholder="1d10" value=<%= character.hitDieValue %>>
+                </div>
+                <div><label for="deathSaves">Death Saves</label></div>
+                <div id="main-die-li">
+                <div id="ds-label"><label for="deathSavesSuccess">Successes</label></div>
+                <div id="horizontal-checkboxes">
+                    <input type="checkbox" name="deathSaveSuccess1">
+                    <input type="checkbox" name="deathSaveSuccess2">
+                    <input type="checkbox" name="deathSaveSuccess3">
+                </div>
+                <div id="ds-label"><label for="deathSavesFailures">Failures</label></div>
+                <div id="horizontal-checkboxes">
+                    <input type="checkbox" name="deathSaveFailure1">
+                    <input type="checkbox" name="deathSaveFailure2">
+                    <input type="checkbox" name="deathSaveFailure3">
+                </div>
+                </div>
+            </div>
+        </div>
+            <div id="main-stat-ul">
+                <div id="init-stat-li" class="main-stat-input">
+                    <div id="hp-labels"><label for="initiative">Initiative</label></div>
+                    <div>
+                        <input type="input" name="initiative" value=<%= Math.floor((character.dex - 10)/2) + 10 %>>
+                    </div>
+                    <div id="hp-labels"><label for="armorClass">Armor Class</label></div>
+                    <div>
+                        <input type="input" name="armorClass" value=<%= character.armorClass %>>
+                    </div>
+                    <div id="hp-labels"><label for="speed">Speed</label></div>
+                    <div>
+                        <input type="input" name="speed" value="<%= character.speed %>m (<%= Math.ceil(character.speed*3.28084) %> ft.)">
+                    </div>
+                    <div id="hp-labels"><label for="inspiration">Inspiration</label></div>
+                    <div>
+                        <input type="checkbox" name="inspiration" value=<%= character.inspiration %>>
+                    </div>
+                </div>
+            </div>
+            <div id="sav-throw-ul">
+                <div class="hp-top"><label for="savingThrows">Saving Throws</label></div>
+                <div id="sav-throw-li">
+                    <div class="hp-labels underline"><label id="sav-throw-stat" for="strST">Strength</label></div>
+                    <div class="hp-inputs">
+                        <% if(character.proficiencies.find(element => element == 'Strength') ) { %>
+                        <% var x = Math.floor((character.str - 10)/2) + character.profBonus; } else var x = Math.floor((character.str - 10)/2); %>
+                        <input id="sav-throw-input" type="input" name="strST"  value="<%= x %>">
+                    </div>
+                    <div class="hp-labels underline"><label for="dexST">Dexterity</label></div>
+                    <div class="hp-inputs">
+                        <% if(character.proficiencies.find(element => element == 'Dexterity') ) { %>
+                        <% var x = Math.floor((character.dex - 10)/2) + character.profBonus; } else var x = Math.floor((character.dex - 10)/2); %>
+                        <input type="input" name="dexST"  value="<%= x %>">
+                    </div>
+                    <div class="hp-labels underline"><label for="conST">Constitution</label></div>
+                    <div class="hp-inputs">
+                        <% if(character.proficiencies.find(element => element == 'Constitution') ) { %>
+                        <% var x = Math.floor((character.con - 10)/2) + character.profBonus; } else var x = Math.floor((character.con - 10)/2); %>
+                        <input type="input" name="conST"  value="<%= x %>">
+                    </div>
+                    <div class="hp-labels underline"><label for="wisST">Wisdom</label></div>
+                    <div class="hp-inputs">
+                        <% if(character.proficiencies.find(element => element == 'Wisdom') ) { %>
+                        <% var x = Math.floor((character.wis - 10)/2) + character.profBonus; } else var x = Math.floor((character.wis - 10)/2); %>
+                        <input type="input" name="wisST"  value="<%= x %>">
+                    </div>
+                    <div class="hp-labels underline"><label for="intST">Intelligence</label></div>
+                    <div class="hp-inputs">
+                        <% if(character.proficiencies.find(element => element == 'Intelligence') ) { %>
+                        <% var x = Math.floor((character.int - 10)/2) + character.profBonus; } else var x = Math.floor((character.int - 10)/2); %>
+                        <input type="input" name="intST"  value="<%= x %>">
+                    </div>
+                    <div class="hp-labels underline"><label for="chaST">Charisma</label></div>
+                    <div class="hp-inputs">
+                        <% if(character.proficiencies.find(element => element == 'Charisma') ) { %>
+                        <% var x = Math.floor((character.cha - 10)/2) + character.profBonus; } else var x = Math.floor((character.cha - 10)/2); %>
+                        <input type="input" name="chaST"  value="<%= x %>">
+                    </div>
+                </div>
+            </div>
+            <div class="sec-stat-ul">
+                <div class="sec-stat-li">
+                    <div class="sec-stat-mods">
+                        <label id="base-stat-proff" for="baseStatus">Lvl <%= character.level %></label>
+                        <label id="base-stat-proff" for="baseStatus">DEX</label>
+                        <label id="base-stat-proff" for="baseStatus">WIS</label>
+                        <label id="base-stat-proff" for="baseStatus">INT</label>
+                        <label id="base-stat-proff" for="baseStatus">STR</label>
+                        <label id="base-stat-proff" for="baseStatus">CHA</label>
+                        <label id="base-stat-proff" for="baseStatus">INT</label>
+                        <label id="base-stat-proff" for="baseStatus">WIS</label>
+                        <label id="base-stat-proff" for="baseStatus">CHA</label>
+                        <label id="base-stat-proff" for="baseStatus">INT</label>
+                        <label id="base-stat-proff" for="baseStatus">WIS</label>
+                        <label id="base-stat-proff" for="baseStatus">INT</label>
+                        <label id="base-stat-proff" for="baseStatus">WIS</label>
+                        <label id="base-stat-proff" for="baseStatus">CHA</label>
+                        <label id="base-stat-proff" for="baseStatus">CHA</label>
+                        <label id="base-stat-proff" for="baseStatus">INT</label>
+                        <label id="base-stat-proff" for="baseStatus">DEX</label>
+                        <label id="base-stat-proff" for="baseStatus">DEX</label>
+                        <label id="base-stat-proff" for="baseStatus">WIS</label>
+                    </div>
+                    <div class="sec-stat-names">
+                        <label id="main-stat-proff" for="prof">Proficiency Bonus</label>
+                        <label id="main-stat-proff" for="dex">Acrobatics</label>
+                        <label id="main-stat-proff" for="wis">Animal Handling</label>
+                        <label id="main-stat-proff" for="int">Arcana</label>
+                        <label id="main-stat-proff" for="str">Athletics</label>
+                        <label id="main-stat-proff" for="cha">Deception</label>
+                        <label id="main-stat-proff" for="int">History</label>
+                        <label id="main-stat-proff" for="wis">Insight</label>
+                        <label id="main-stat-proff" for="cha">Intimidation</label>
+                        <label id="main-stat-proff" for="int">Investigation</label>
+                        <label id="main-stat-proff" for="wis">Medicine</label>
+                        <label id="main-stat-proff" for="int">Nature</label>
+                        <label id="main-stat-proff" for="wis">Perception</label>
+                        <label id="main-stat-proff" for="cha">Performance</label>
+                        <label id="main-stat-proff" for="cha">Persuasion</label>
+                        <label id="main-stat-proff" for="int">Religion</label>
+                        <label id="main-stat-proff" for="dex">Sleight of Hand</label>
+                        <label id="main-stat-proff" for="dex">Stealth</label>
+                        <label id="main-stat-proff" for="wis">Survival</label>
+                    </div>
+                    <div class="sec-stat-inputs">
+
+                        <input id="input-stat-proff" type="input" name="proffBonus" value="<%= character.profBonus %>">
+
+                        <% if(character.proficiencies.find(element => element == 'Acrobatics') ) { %>
+                        <% var x = Math.floor((character.dex - 10)/2) + character.profBonus; } else var x = Math.floor((character.dex - 10)/2); %>
+                        <input id="input-stat-proff" type="input" name="dex" value="<%= x %>">
+
+                        <% if(character.proficiencies.find(element => element == 'Animal Handling') ) { %>
+                        <% var x = Math.floor((character.wis - 10)/2) + character.profBonus; } else var x = Math.floor((character.wis - 10)/2); %>
+                        <input id="input-stat-proff" type="input" name="wis"  value="<%= x %>">
+
+                        <% if(character.proficiencies.find(element => element == 'Arcana') ) { %>
+                        <% var x = Math.floor((character.int - 10)/2) + character.profBonus; } else var x = Math.floor((character.int - 10)/2); %>
+                        <input id="input-stat-proff" type="input" name="int"  value="<%= x %>">
+
+                        <% if(character.proficiencies.find(element => element == 'Athletics') ) { %>
+                        <% var x = Math.floor((character.str - 10)/2) + character.profBonus; } else var x = Math.floor((character.str - 10)/2); %>
+                        <input id="input-stat-proff" type="input" name="str"  value="<%= x %>">
+
+                        <% if(character.proficiencies.find(element => element == 'Deception') ) { %>
+                        <% var x = Math.floor((character.cha - 10)/2) + character.profBonus; } else var x = Math.floor((character.cha - 10)/2); %>
+                        <input id="input-stat-proff" type="input" name="cha"  value="<%= x %>">
+
+                        <% if(character.proficiencies.find(element => element == 'History') ) { %>
+                        <% var x = Math.floor((character.int - 10)/2) + character.profBonus; } else var x = Math.floor((character.int - 10)/2); %>
+                        <input id="input-stat-proff" type="input" name="int"  value="<%= x %>">
+
+                        <% if(character.proficiencies.find(element => element == 'Insight') ) { %>
+                        <% var x = Math.floor((character.wis - 10)/2) + character.profBonus; } else var x = Math.floor((character.wis - 10)/2); %>
+                        <input id="input-stat-proff" type="input" name="wis"  value="<%= x %>">
+
+                        <% if(character.proficiencies.find(element => element == 'Intimidation') ) { %>
+                        <% var x = Math.floor((character.cha - 10)/2) + character.profBonus; } else var x = Math.floor((character.cha - 10)/2); %>
+                        <input id="input-stat-proff" type="input" name="cha"  value="<%= x %>">
+
+                        <% if(character.proficiencies.find(element => element == 'Investigation') ) { %>
+                        <% var x = Math.floor((character.int - 10)/2) + character.profBonus; } else var x = Math.floor((character.int - 10)/2); %>
+                        <input id="input-stat-proff" type="input" name="int"  value="<%= x %>">
+
+                        <% if(character.proficiencies.find(element => element == 'Medicine') ) { %>
+                        <% var x = Math.floor((character.wis - 10)/2) + character.profBonus; } else var x = Math.floor((character.wis - 10)/2); %>
+                        <input id="input-stat-proff" type="input" name="wis"  value="<%= x %>">
+
+                        <% if(character.proficiencies.find(element => element == 'Nature') ) { %>
+                        <% var x = Math.floor((character.int - 10)/2) + character.profBonus; } else var x = Math.floor((character.int - 10)/2); %>
+                        <input id="input-stat-proff" type="input" name="int"  value="<%= x %>">
+
+                        <% if(character.proficiencies.find(element => element == 'Perception') ) { %>
+                        <% var x = Math.floor((character.wis - 10)/2) + character.profBonus; } else var x = Math.floor((character.wis - 10)/2); %>
+                        <input id="input-stat-proff" type="input" name="wis"  value="<%= x %>">
+
+                        <% if(character.proficiencies.find(element => element == 'Performance') ) { %>
+                        <% var x = Math.floor((character.cha - 10)/2) + character.profBonus; } else var x = Math.floor((character.cha - 10)/2); %>
+                        <input id="input-stat-proff" type="input" name="cha"  value="<%= x %>">
+
+                        <% if(character.proficiencies.find(element => element == 'Persuasion') ) { %>
+                        <% var x = Math.floor((character.cha - 10)/2) + character.profBonus; } else var x = Math.floor((character.cha - 10)/2); %>
+                        <input id="input-stat-proff" type="input" name="cha"  value="<%= x %>">
+
+                        <% if(character.proficiencies.find(element => element == 'Religion') ) { %>
+                        <% var x = Math.floor((character.int - 10)/2) + character.profBonus; } else var x = Math.floor((character.int - 10)/2); %>
+                        <input id="input-stat-proff" type="input" name="int"  value="<%= x %>">
+
+                        <% if(character.proficiencies.find(element => element == 'Sleight of Hand') ) { %>
+                        <% var x = Math.floor((character.dex - 10)/2) + character.profBonus; } else var x = Math.floor((character.dex - 10)/2); %>
+                        <input id="input-stat-proff" type="input" name="dex"  value="<%= x %>">
+
+                        <% if(character.proficiencies.find(element => element == 'Stealth') ) { %>
+                        <% var x = Math.floor((character.dex - 10)/2) + character.profBonus; } else var x = Math.floor((character.dex - 10)/2); %>
+                        <input id="input-stat-proff" type="input" name="dex"  value="<%= x %>">
+
+                        <% if(character.proficiencies.find(element => element == 'Survival') ) { %>
+                        <% var x = Math.floor((character.wis - 10)/2) + character.profBonus; } else var x = Math.floor((character.wis - 10)/2); %>
+                        <input id="input-stat-proff" type="input" name="wis"  value="<%= x %>">
+                    </div>                    
+                </div>
+            </div>
+
+            <div id="stuff-div">
+                <div id="items-text">
+                    <textarea name="items" id="scroll-text" cols="30" rows="5" placeholder="Items"></textarea>
+                </div>
+                <div id="money-inputs">
+                <div><label>Copper Coins</label></div>
+                <div><input type="number" name="copperCoins" placeholder="0"></div>
+                <div><label>Silver Coins</label></div>
+                <div><input type="number" name="silverCoins" placeholder="0"></div>
+                <div><label>Gold Coins</label></div>
+                <div><input type="number" name="goldCoins" placeholder="0"></div>
+                <div><label>Platinum Coins</label></div>
+                <div><input type="number" name="platinumCoins" placeholder="0"></div>
+                </div>
+                <div id="spells-text">
+                    <textarea name="spells" id="scroll-text" cols="61" rows="10"placeholder="Spells"></textarea>
+                </div>
+                <div id="die-roller-div">
+                <div id="die-roller">
+                    <p id="diceplaceholder4" class="diceplaceholder">
+                        d4
+                    </p>
+                    <button id="roll-button4" class="button-dice4 button-dice">d4</button>
+                </div>
+                <div id="die-roller">
+                    <p id="diceplaceholder6" class="diceplaceholder">
+                        d6
+                    </p>
+                    <button id="roll-button6" class="button-dice6 button-dice">d6</button>
+                </div>
+                <div id="die-roller">
+                    <p id="diceplaceholder8" class="diceplaceholder">
+                        d8
+                    </p>
+                    <button id="roll-button8" class="button-dice8 button-dice">d8</button>
+                </div>
+                <div id="die-roller">
+                    <p id="diceplaceholder10" class="diceplaceholder">
+                        d10
+                    </p>
+                    <button id="roll-button10" class="button-dice10 button-dice">d10</button>
+                </div>
+                <div id="die-roller">
+                    <p id="diceplaceholder12" class="diceplaceholder">
+                        d12
+                    </p>
+                    <button id="roll-button12" class="button-dice12 button-dice">d12</button>
+                </div>
+                <div id="die-roller">
+                    <p id="diceplaceholder20" class="diceplaceholder">
+                        d20
+                    </p>
+                    <button id="roll-button20" class="button-dice20 button-dice">d20</button>
+                </div>
+                <div id="die-roller">
+                    <p id="diceplaceholder100" class="diceplaceholder">
+                        d100
+                    </p>
+                    <button id="roll-button100" class="button-dice100 button-dice">d100</button>
+                </div>
+                <div id="die-roller" class="die-roller-custom">
+                    <p id="diceplaceholdercustom" class="diceplaceholder">
+                        Custom
+                    </p>
+                    <input type="value" placeholder="0" id="custom-value" class="diceplaceholdervalue">
+                    <button id="roll-button" class="button-dicecustom button-dice">Roll</button>
+                </div>
+                </div>
+
+            </div>
+
+            <div id="save-char-button"><button>Update Character</button></div>
+
+    </div>
+
+    </form>
+
+    <script type="text/javascript" src="js/characterStats.js"></script>
+
+<%- include('partials/footer') %>

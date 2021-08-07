@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+
+    <% pageName = "Home" %>
+    <% var counter = 0; %> 
+
+    <div id="main-body">
+
+        <ul>
+            <% if (currentUser) { %> 
+                <h2>Welcome, <%= currentUser.nickname %>!</h2>
+                <br>
+                <h5>These are your characters:</h5>
+            <% for (character of characters) { %>
+                <% if (character.playerName == currentUser.nickname) { %> 
+                <li id="character-names" class="li-without-dots"><a href="/character/<%= character._id %>"><%= character.charName %></a></li>
+            <% counter++; } } %>
+            <% if (counter == 0) { %> 
+                <h4>You don't have any characters! Head to the <a href="/charactercreation" id="character-names">Character Builder</a> to start making your characters!</h4>
+            <% } } else { %> 
+                <div id="not-logged-text">
+                    <h1>Please login to see the content!</h1>
+                    <h5>This is a Dungeons and Dragon character creation system.</h5>
+                    <p>Here you will be able to create and update your character, using it as a virtual sheet!</p>
+                </div>
+            <% } %> 
+            </ul>
+
+    </div>
+
+    
+    
+    <%- include('partials/footer') %>

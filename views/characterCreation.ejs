@@ -1,0 +1,139 @@
+<%- include('partials/header') %>
+
+<link rel="stylesheet" href="css/characterCreation.css">
+
+<form action="/character" method="POST">
+
+    <div id="main-body-character">
+
+            <div id="name-div" class="main-divs"><label for="name" id="name-label">Character Name</label>
+                <input type="text" name="charName" id="name-input"></div>
+            <div id="class-div" class="main-divs"><label for="class" id="class-label">Class</label>
+                <select name="class" id="classes-option">
+                    <option value="selectAClass">Select a class</option>
+                    <option value="Barbarian">Barbarian</option>
+                    <option value="Bard">Bard</option>
+                    <option value="Cleric">Mage</option>
+                    <option value="Fighter">Fighter</option>
+                    <option value="Cleric">Cleric</option>
+                    <option value="Rogue">Rogue</option>
+                </select>
+                <label for="level" id="level-label">Level</label>
+                    <input type="number" name="level" id="level-input">
+            </div>
+            <div id="race-div" class="main-divs"><label for="race" id="race-label">Race</label>
+                <select name="race" id="races-option">
+                    <option value="selectARace">Select a race</option>
+                    <option value="Dwarf">Dwarf</option>
+                    <option value="Goblin">Goblin</option>
+                    <option value="Tiefling">Tiefling</option>
+                    <option value="Human">Human</option>
+                    <option value="Elf">Elf</option>
+                    <option value="Half-elf">Half-elf</option>
+                    <option value="Halfling">Halfling</option>
+                </select>
+            </div>
+        
+            <div id="sec-stats-div" class="main-divs">
+            <label for="profBonus" id="profBonus-label">Proficiency Bonus</label>
+                <input type="number" name="profBonus" id="profBonus-input">
+            <label for="armorClass" id="armorClass-label">Armor Class</label>
+                <input type="number" name="armorClass" id="armorClass-input">
+            <label for="speed" id="speed-label">Speed</label>
+                <input type="number" name="speed" id="speed-input">
+            </div>
+
+            <div id="hp-div" class="main-divs"><label for="maxHP" id="maxHP-label">Maximum Hit Points</label>
+                <input type="number" name="maxHP" id="maxHP-input"></div>
+                <input type="number" name="curHP" id="curHP-input" hidden>
+        
+            <div id="main-stats-div">
+            <div id="main-stat" class="main-divs main-stats"><label for="str" id="str-label">Strength</label>
+                <input type="number" name="str" id="str-input"></div>
+            <div id="main-stat" class="main-divs main-stats"><label for="dex" id="dex-label">Dexterity</label>
+                <input type="number" name="dex" id="dex-input"></div>
+            <div id="main-stat" class="main-divs main-stats"><label for="con" id="con-label">Constitution</label>
+                <input type="number" name="con" id="con-input"></div>
+            <div id="main-stat" class="main-divs main-stats"><label for="wis" id="wis-label">Wisdom</label>
+                <input type="number" name="wis" id="wis-input"></div>
+            <div id="main-stat" class="main-divs main-stats"><label for="int" id="int-label">Intellect</label>
+                <input type="number" name="int" id="int-input"></div>
+            <div id="main-stat" class="main-divs main-stats"><label for="cha" id="cha-label">Charisma</label>
+                <input type="number" name="cha" id="cha-input"></div>
+            </div>
+        
+            <div id="svt-div" class="main-divs"><label for="savingThrows" id="savingThrows-label">Saving Throws</label>
+                <div>
+                <select name="savingThrows1" id="selector1">
+                    <option value="">Pick the first</option>
+                    <option value="Strength">Strength</option>
+                    <option value="Dexterity">Dexterity</option>
+                    <option value="Constitution">Constitution</option>
+                    <option value="Wisdom">Wisdom</option>
+                    <option value="Intellect">Intellect</option>
+                    <option value="Charisma">Charisma</option>
+                </select>
+                <select name="savingThrows2" id="selector2">
+                    <option value="">Pick the second</option>
+                    <option value="Strength">Strength</option>
+                    <option value="Dexterity">Dexterity</option>
+                    <option value="Constitution">Constitution</option>
+                    <option value="Wisdom">Wisdom</option>
+                    <option value="Intellect">Intellect</option>
+                    <option value="Charisma">Charisma</option>
+                </select>
+                </div>
+            </div>
+        
+            <div id="profs-div" class="main-divs"><label for="proficiencies" id="proffs-label">Proficiencies (simply click to select multiple)</label>
+                <select name="proficiencies" id="selector3" size="3" multiple>
+                    <option value="Acrobatics">Acrobatics</option>
+                    <option value="Animal Handling">Animal Handling</option>
+                    <option value="Arcana">Arcana</option>
+                    <option value="Athletics">Athletics</option>
+                    <option value="Deception">Deception</option>
+                    <option value="History">History</option>
+                    <option value="Insight">Insight</option>
+                    <option value="Intimidation">Intimidation</option>
+                    <option value="Investigation">Investigation</option>
+                    <option value="Medicine">Medicine</option>
+                    <option value="Nature">Nature</option>
+                    <option value="Perception">Perception</option>
+                    <option value="Performance">Performance</option>
+                    <option value="Persuasion">Persuasion</option>
+                    <option value="Religion">Religion</option>
+                    <option value="Sleight of Hand">Sleight of Hand</option>
+                    <option value="Stealth">Stealth</option>
+                    <option value="Survival">Survival</option>
+                </select>
+            </div>
+            
+            <div id="copper-silver">
+            <div id="coins" class="main-divs"><label for="copper" id="copper-label">Copper</label>
+                <input type="number" name="copperCoins" id="copper-input"></div>
+            <div id="coins" class="main-divs"><label for="silver" id="silver-label">Silver</label>
+                <input type="number" name="silverCoins" id="silver-input"></div>
+            </div>
+            <div id="gold-platinum">
+            <div id="coins" class="main-divs"><label for="gold" id="gold-label">Gold</label>
+                <input type="number" name="goldCoins" id="gold-input"></div>
+            <div id="coins" class="main-divs"><label for="platinum" id="platinum-label">Platinum</label>
+                <input type="number" name="platinumCoins" id="platinum-input"></div>
+            </div>
+
+            
+            <textarea name="proficiencies" id="prof-input-text" cols="50" rows="5" wrap="hard" readonly placeholder="Your Proficiencies"></textarea>
+            
+            <input type="text" name="playerName" value="<%= currentUser.nickname %>" hidden readonly>
+
+            <div id="saveCharacter-div">
+                <button id="saveCharacter">Save Character</button>
+            </div>
+
+    </div>
+
+</form>
+
+    <script type="text/javascript" src="js/characterCreation.js"></script>
+
+<%- include('partials/footer') %>

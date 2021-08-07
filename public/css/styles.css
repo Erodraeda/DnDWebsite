@@ -1,0 +1,66 @@
+body{
+    background: url(/images/background2.jpg) no-repeat;
+    background-size: cover;
+}
+
+#logoImage{
+    width: 60px;
+}
+
+#login-register{
+    margin-left: 100;
+}
+
+#register{
+    width: 35%;
+    margin: auto;
+}
+
+#login-button{
+    font-size: 20px;
+    margin-right: 35px;
+}
+
+#register-button{
+    font-size: 11px;
+    align-self: center;
+    margin-left: 5px;
+}
+
+#main-body{
+    width: 750px;
+    border: 5px black;
+	border-style: double inset;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff6e8;
+    padding: 2em;
+}
+
+.li-without-dots{
+	list-style-type: none;
+}
+
+#character-names{
+    font-family: "Copperplate", fantasy;
+    font-size: 20px;
+}
+
+#character-names a:link {
+    text-decoration: none;
+    color: black;
+}
+
+#character-names a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+#character-names a:active {
+    text-decoration: none;
+}
+
+#not-logged-text {
+    text-align: center;
+    margin-left: 0px;
+}

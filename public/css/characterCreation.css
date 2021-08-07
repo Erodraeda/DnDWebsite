@@ -1,0 +1,213 @@
+#main-body-character{
+	width:1000px;
+	margin: 0 auto;
+	border: 5px black;
+	border-style: double inset;
+	height: fit-content;
+	display: grid;
+    grid-template-columns: 225px 225px 225px 310px;
+	grid-auto-rows: minmax(50px, auto);
+	text-align: center;
+	grid-auto-flow: column;
+	background-color: #fff6e8;
+}
+
+.main-divs{
+	border: 3px rgb(216, 114, 114);
+	border-style: double outset outset;
+	border-radius:10px;
+	margin: 5px;
+}
+
+.main-divs input{
+	border-radius: 7px;
+	text-align: center;
+}
+
+.main-divs label{
+	font-family: "Copperplate", fantasy;
+}
+
+#name-div{
+
+	grid: 1 1;
+}
+
+#class-div{
+	grid-row: 2;
+	display: grid;
+	grid-template-rows: repeat(4, 1fr);
+	justify-items: center;
+	align-items: end;
+}
+
+#class-div select{
+	width: 120px;
+	align-self: start;
+}
+
+#class-label{
+	grid-row: 1;
+}
+
+#classes-option{
+	grid-row: 2;
+}
+
+#level-label{
+	grid-row: 3;
+}
+
+#level-input{
+	grid-row: 4;
+}
+
+#level-input{
+	width: 65px;
+	align-self: start;
+	text-align: center;
+	padding-left:15px;
+}
+
+#race-div{
+	grid-row: 1;
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+	justify-items: center;
+}
+
+#race-div select{
+	width: 130px;
+	align-self: start;
+	margin-top: -5px;
+}
+
+#sec-stats-div{
+	grid-row: 2/4;
+	display: grid;
+	grid-template-rows: repeat(6, 2em);
+	align-self: start;
+	padding: 15px;
+}
+
+#sec-stats-div input{
+	width: 65px;
+	align-self: start;
+	text-align: center;
+	padding-left:15px;
+	justify-self: center;
+}
+
+#hp-div{
+	grid-row: 3;
+	grid-column: 1;
+	align-self: start;
+	padding: 15px;
+	padding-top: 10px;
+}
+
+#hp-div input{
+	width: 65px;
+	align-self: start;
+	text-align: center;
+	padding-left:15px;
+	justify-self: center;
+}
+
+#main-stats-div{
+	grid-row: 1/5;
+	display: grid;
+	grid-auto-columns: auto;
+	grid-auto-rows: minmax(75px, auto);
+	justify-items: start;
+}
+
+#main-stats-div input{
+	width: 65px;
+	align-self: start;
+	text-align: center;
+	padding-left:15px;
+	justify-content: end;
+}
+
+#main-stat label{
+	justify-self: start;
+}
+
+#main-stat{
+	padding: 10px;
+}
+
+.main-stats{
+	width: 200px;
+}
+
+#copper-silver{
+	grid-column: 1;
+	grid-row: 4;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-self: start;
+	justify-items: center;
+}
+
+#gold-platinum{
+	grid-column: 2;
+	grid-row: 4;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-self: start;
+	justify-items: center;
+}
+
+#coins{
+	width:90px;
+}
+
+#coins input{
+	width: 65px;
+	align-self: start;
+	text-align: center;
+	padding-left:15px;
+	margin-bottom: 10px;
+}
+
+#selector3{
+	border: 3px rgb(216, 114, 114);
+	border-style: double outset outset;
+	border-radius:10px;
+}
+
+::-webkit-scrollbar {
+	width: 20px;
+}
+
+::-webkit-scrollbar-track {
+	background: #fff6e8;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #f3b360;
+	border-radius: 10px;
+}
+
+#prof-input-text{
+    grid-auto-rows: stretch;
+    margin: 5px;
+    resize: none;
+	border: 3px rgb(216, 114, 114);
+	border-style: double outset outset;
+	border-radius: 7px;
+}
+
+#saveCharacter{
+	border: 3px rgb(216, 114, 114);
+	border-style: double outset outset;
+	border-radius: 7px;
+	background-color: #faebd7;
+	text-align: center;
+}
+
+#saveCharacter-div{
+	align-self: center;
+}
