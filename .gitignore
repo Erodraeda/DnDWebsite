@@ -1,4 +1,7 @@
-# Auto generated files
+# Auto gen files
 
-node_modules
 yarn.lock
+
+# Auto gen dirs
+
+node_modules/*
